@@ -1,75 +1,367 @@
-# TestApp
+# BWStory React Native Test Assignment
 
-An Expo and React Native application using Expo Router, TypeScript, and NativeWind. It targets Android, iOS, and web.
+A React Native implementation of the **Discover** and **Profile** screens based on the BWStory application UI, created as part of the **Blackcoffer React Native Developer Test Assignment**.
 
-## Requirements
+---
 
-- Node.js and npm
-- A compatible Android or iOS device/emulator for native testing; web can run in a browser
+## 📱 Screens Implemented
 
-The project uses Expo SDK 57. Expo APIs and configuration can change between SDK releases, so use the versioned documentation for this project rather than relying on remembered API behavior:
+### Discover Screen
 
-- [Expo SDK 57 documentation](https://docs.expo.dev/versions/v57.0.0/)
-- [Expo documentation index for AI assistants](https://docs.expo.dev/llms.txt)
-- [Expo Router documentation](https://docs.expo.dev/router/introduction/)
+- Dark teal header
+- Search UI
+- Filter button
+- Social/news-style feed
+- User profile avatars
+- Post cover images
+- Post metadata:
+  - Date
+  - Location
+  - Views
+- Like, share and comment actions
+- Media-style play and volume controls
+- Four static dummy posts
+- Bottom navigation
 
-Before changing an Expo, EAS, or React Native API, check the Expo SDK major version in `package.json`, read the matching versioned docs, then follow the relevant topic links from the Expo documentation index when needed.
+### Profile Screen
 
-## Setup
+- Profile header
+- Back navigation
+- Update Account action
+- Profile cover image
+- Profile image/camera action
+- Name
+- Gender
+- Location
+- Profession
+- Bio section
+- Bottom navigation
 
-Install dependencies and start the development server:
+### Navigation
+
+The following navigation is functional:
+
+- Discover → Profile
+- Profile → Discover
+
+The **Location**, **Add**, and **Notifications** buttons are UI placeholders because only the Discover and Profile screens were required for the assignment.
+
+---
+
+## 🛠️ Tech Stack
+
+- React Native
+- Expo SDK 57
+- TypeScript
+- Expo Router
+- NativeWind
+- Tailwind CSS
+- Lucide React Native
+
+---
+
+# 🚀 Installation & Setup
+
+Follow the steps below to set up and run the project from a clean environment.
+
+## 1. Prerequisites
+
+Make sure the following are installed on your system:
+
+- [Node.js](https://nodejs.org/) — LTS version recommended
+- [Git](https://git-scm.com/)
+- Expo Go on your Android device, if you want to test on a physical device
+
+Verify Node.js and npm:
+
+```bash
+node -v
+npm -v
+```
+
+Verify Git:
+
+```bash
+git --version
+```
+
+---
+
+## 2. Clone the Repository
+
+Open a terminal, Command Prompt, or PowerShell and clone the repository:
+
+```bash
+git clone https://github.com/YOUR_USERNAME/testApp.git
+```
+
+> Replace `YOUR_USERNAME/testApp` with the actual GitHub repository URL.
+
+---
+
+## 3. Navigate to the Project
+
+Move into the project directory:
+
+```bash
+cd testApp
+```
+
+You should now be inside the project folder:
+
+```text
+testApp/
+```
+
+---
+
+## 4. Install Dependencies
+
+Install all project dependencies using npm:
 
 ```bash
 npm install
-npm start
 ```
 
-The development server can launch the app in Expo Go, a development build, an Android emulator, an iOS simulator, or a web browser. Expo Go does not include every native module; use a development build if a dependency requires native code that Expo Go does not provide.
+This installs the packages specified in `package.json`.
 
-## Commands
+---
 
-Run the project scripts with npm:
+## 5. Start the Expo Development Server
 
-| Command                 | Purpose                                                       |
-| ----------------------- | ------------------------------------------------------------- |
-| `npm start`             | Start the Expo development server                             |
-| `npm run android`       | Start Expo and open Android                                   |
-| `npm run ios`           | Start Expo and open iOS                                       |
-| `npm run web`           | Start Expo for web                                            |
-| `npm run lint`          | Run Expo lint                                                 |
-| `npx tsc --noEmit`      | Type-check TypeScript                                         |
-| `npx expo-doctor`       | Check Expo dependency and project configuration health        |
-| `npm run reset-project` | Run the template reset helper; inspect its effects before use |
+Start the development server:
 
-Run both lint and type-check before considering a change complete. Run Expo Doctor when diagnosing dependency or app configuration compatibility.
+```bash
+npx expo start
+```
 
-## Project Layout
+Expo will start the development server and display a QR code in the terminal.
+
+---
+
+## 6. Run on a Physical Android Device
+
+To run the application on a physical Android device:
+
+1. Install **Expo Go** from the Google Play Store.
+2. Connect your Android phone and computer to the same Wi-Fi network.
+3. Start the Expo development server:
+
+```bash
+npx expo start
+```
+
+4. Open Expo Go on your Android device.
+5. Scan the QR code displayed by Expo.
+6. The application will open on your device.
+
+---
+
+## 7. Run on an Android Emulator
+
+If Android Studio and an Android emulator are installed and configured:
+
+```bash
+npx expo start --android
+```
+
+Expo will launch the application on the running Android emulator.
+
+---
+
+# 📦 Android APK
+
+A pre-built Android APK has been generated for the assignment and is provided separately.
+
+### Installing the APK
+
+If you only want to test the submitted application:
+
+1. Download the provided `.apk` file.
+2. Transfer it to an Android device if necessary.
+3. Open the APK file.
+4. If Android asks for permission to install applications from the source, allow it.
+5. Install the application.
+6. Launch the application.
+
+No Node.js, Expo, or development environment is required to test the pre-built APK.
+
+### Building a New APK
+
+To create another Android APK using EAS Build:
+
+```bash
+eas login
+```
+
+Then:
+
+```bash
+eas build -p android --profile preview
+```
+
+After the build completes, EAS will provide a download link for the generated APK.
+
+---
+
+# 🍎 iOS
+
+The project is built using Expo and is compatible with iOS.
+
+An installable iOS IPA is not included with this submission because an **Apple Developer Program account** is required for the necessary iOS signing and distribution credentials.
+
+The project can be configured and built for iOS through EAS once the required Apple Developer credentials are available.
+
+---
+
+# 📂 Project Structure
 
 ```text
-src/
-  app/             Expo Router route files and layouts
-  components/      Shared UI components
-  data/            Local and sample data
-  screens/         Screen-level UI modules
-  global.css       App styling entry
-assets/            App images, icons, and other static assets
-scripts/           Project maintenance scripts
+testApp/
+│
+├── assets/
+│   ├── profiles/
+│   │   ├── pro1.jpg
+│   │   ├── pro2.jpg
+│   │   ├── pro3.jpg
+│   │   └── pro4.jpg
+│   │
+│   ├── posts/
+│   │   ├── post1.jpg
+│   │   ├── post2.jpg
+│   │   ├── post3.jpg
+│   │   └── post4.jpg
+│   │
+│   ├── profile.jpg
+│   └── profile-cover.jpg
+│
+├── src/
+│   ├── app/
+│   │   ├── _layout.tsx
+│   │   ├── _index.tsx
+│   │   └── _explore.tsx
+│   │
+│   ├── components/
+│   │   ├── app-tabs.tsx
+│   │   ├── animated-icon.tsx
+│   │   └── storyCard.tsx
+│   │
+│   ├── data/
+│   │   └── dummyData.ts
+│   │
+│   └── screens/
+│       ├── discover.tsx
+│       └── profile.tsx
+│
+├── global.css
+├── app.json
+├── eas.json
+├── babel.config.js
+├── metro.config.js
+├── tailwind.config.js
+├── package.json
+└── package-lock.json
 ```
 
-The Expo Router entry point is `src/app/`. Keep route files and layouts there; place reusable components, hooks, utilities, and screen modules outside the route directory. The root layout is `src/app/_layout.tsx`.
+---
 
-## Development Rules
+# 🗃️ Dummy Data
 
-- Use Expo Router for navigation. Import `Link`, `router`, and `useLocalSearchParams` from `expo-router` as appropriate.
-- Keep implementations mobile-first, performant, and compatible across Android, iOS, and web.
-- When adding a package, check whether an Expo module is recommended and use `npx expo install <package>` to select an SDK-compatible version. Do not use a package manager's generic add command for Expo dependencies.
-- If `ios/` and `android/` directories are absent, they are generated by Continuous Native Generation. Do not create or edit them manually; configure native behavior through `app.json` or config plugins.
-- After adding a native-code dependency, run a development build. Use `npx expo run:android` or `npx expo run:ios` where the local toolchain is available, or use an EAS development build.
-- For EAS build, submit, or update commands, use `npx eas-cli@latest <command>` so the CLI is current. See the [EAS documentation](https://docs.expo.dev/eas/index.md).
+The Discover feed currently uses static local data stored in:
 
-## Useful Documentation
+```text
+src/data/dummyData.ts
+```
 
-- [Expo documentation](https://docs.expo.dev/)
-- [Expo development builds](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Expo TypeScript guide](https://docs.expo.dev/guides/typescript/)
-- [Expo Router](https://docs.expo.dev/router/introduction/)
+Each post contains:
+
+- User information
+- Profile image
+- Post image
+- Date
+- Location
+- Views
+- Likes
+- Shares
+- Comments
+- Post title
+
+All images used by the Discover and Profile screens are stored locally in the `assets` directory.
+
+This allows the application UI to work without depending on external image URLs.
+
+---
+
+# 🎨 Styling
+
+The project uses **NativeWind** for React Native styling.
+
+Important configuration files:
+
+```text
+babel.config.js
+metro.config.js
+tailwind.config.js
+global.css
+```
+
+The Tailwind configuration includes:
+
+```text
+src/app
+src/components
+src/screens
+```
+
+so NativeWind classes are available throughout the application.
+
+---
+
+# ✨ Future Improvements
+
+The following features could be added in a production version.
+
+### Discover
+
+- Backend/API integration for dynamic posts
+- Pagination / infinite scrolling
+- Pull-to-refresh
+- Functional search
+- Category and location filtering
+- Functional likes
+- Comments
+- Sharing
+- Bookmark/save posts
+- Real video playback
+
+### Profile
+
+- User authentication
+- Edit profile functionality
+- Profile and cover image uploads
+- User-generated posts
+- Form validation
+
+### Application
+
+- Firebase or Supabase backend
+- Push notifications
+- Offline data caching
+- Dark mode
+- Accessibility improvements
+- Analytics
+- Crash reporting
+
+---
+
+# 👨‍💻 Developer
+
+**Sumit Rathod**
+
+React Native / Full Stack Web Developer
+
+---
+
+## 📄 Assignment
+
+This project was developed as part of the **Blackcoffer React Native Developer Test Assignment**.
