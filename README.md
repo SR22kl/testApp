@@ -1,56 +1,75 @@
-# Welcome to your Expo app 👋
+# TestApp
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+An Expo and React Native application using Expo Router, TypeScript, and NativeWind. It targets Android, iOS, and web.
 
-## Get started
+## Requirements
 
-1. Install dependencies
+- Node.js and npm
+- A compatible Android or iOS device/emulator for native testing; web can run in a browser
 
-   ```bash
-   npm install
-   ```
+The project uses Expo SDK 57. Expo APIs and configuration can change between SDK releases, so use the versioned documentation for this project rather than relying on remembered API behavior:
 
-2. Start the app
+- [Expo SDK 57 documentation](https://docs.expo.dev/versions/v57.0.0/)
+- [Expo documentation index for AI assistants](https://docs.expo.dev/llms.txt)
+- [Expo Router documentation](https://docs.expo.dev/router/introduction/)
 
-   ```bash
-   npx expo start
-   ```
+Before changing an Expo, EAS, or React Native API, check the Expo SDK major version in `package.json`, read the matching versioned docs, then follow the relevant topic links from the Expo documentation index when needed.
 
-In the output, you'll find options to open the app in a
+## Setup
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+Install dependencies and start the development server:
 
 ```bash
-npm run reset-project
+npm install
+npm start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+The development server can launch the app in Expo Go, a development build, an Android emulator, an iOS simulator, or a web browser. Expo Go does not include every native module; use a development build if a dependency requires native code that Expo Go does not provide.
 
-### Other setup steps
+## Commands
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+Run the project scripts with npm:
 
-## Learn more
+| Command                 | Purpose                                                       |
+| ----------------------- | ------------------------------------------------------------- |
+| `npm start`             | Start the Expo development server                             |
+| `npm run android`       | Start Expo and open Android                                   |
+| `npm run ios`           | Start Expo and open iOS                                       |
+| `npm run web`           | Start Expo for web                                            |
+| `npm run lint`          | Run Expo lint                                                 |
+| `npx tsc --noEmit`      | Type-check TypeScript                                         |
+| `npx expo-doctor`       | Check Expo dependency and project configuration health        |
+| `npm run reset-project` | Run the template reset helper; inspect its effects before use |
 
-To learn more about developing your project with Expo, look at the following resources:
+Run both lint and type-check before considering a change complete. Run Expo Doctor when diagnosing dependency or app configuration compatibility.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Project Layout
 
-## Join the community
+```text
+src/
+  app/             Expo Router route files and layouts
+  components/      Shared UI components
+  data/            Local and sample data
+  screens/         Screen-level UI modules
+  global.css       App styling entry
+assets/            App images, icons, and other static assets
+scripts/           Project maintenance scripts
+```
 
-Join our community of developers creating universal apps.
+The Expo Router entry point is `src/app/`. Keep route files and layouts there; place reusable components, hooks, utilities, and screen modules outside the route directory. The root layout is `src/app/_layout.tsx`.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Development Rules
+
+- Use Expo Router for navigation. Import `Link`, `router`, and `useLocalSearchParams` from `expo-router` as appropriate.
+- Keep implementations mobile-first, performant, and compatible across Android, iOS, and web.
+- When adding a package, check whether an Expo module is recommended and use `npx expo install <package>` to select an SDK-compatible version. Do not use a package manager's generic add command for Expo dependencies.
+- If `ios/` and `android/` directories are absent, they are generated by Continuous Native Generation. Do not create or edit them manually; configure native behavior through `app.json` or config plugins.
+- After adding a native-code dependency, run a development build. Use `npx expo run:android` or `npx expo run:ios` where the local toolchain is available, or use an EAS development build.
+- For EAS build, submit, or update commands, use `npx eas-cli@latest <command>` so the CLI is current. See the [EAS documentation](https://docs.expo.dev/eas/index.md).
+
+## Useful Documentation
+
+- [Expo documentation](https://docs.expo.dev/)
+- [Expo development builds](https://docs.expo.dev/develop/development-builds/introduction/)
+- [Expo TypeScript guide](https://docs.expo.dev/guides/typescript/)
+- [Expo Router](https://docs.expo.dev/router/introduction/)
